@@ -1,0 +1,230 @@
+:root {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #fff8e7;
+  background:
+    radial-gradient(circle at top, rgba(255, 214, 153, 0.16), transparent 26%),
+    linear-gradient(180deg, #24130c 0%, #0a0908 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 18px;
+}
+
+.ballpit-frame {
+  position: relative;
+  min-height: calc(100vh - 36px);
+  overflow: hidden;
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.ballpit-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 20px;
+  max-width: 760px;
+  padding: 34px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #ffd79f;
+  font-size: 0.82rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.overlay h1 {
+  margin: 0;
+  max-width: 10ch;
+  font-size: clamp(3.4rem, 9vw, 7.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.lead {
+  margin: 0;
+  max-width: 56ch;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.65;
+  color: rgba(255, 248, 231, 0.84);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.useless-button,
+.secondary-button {
+  min-height: 50px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.useless-button {
+  background: #ffcf8a;
+  color: #1b120d;
+  box-shadow: 0 12px 24px rgba(255, 207, 138, 0.22);
+}
+
+.secondary-button {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff8e7;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.useless-button:hover,
+.secondary-button:hover {
+  transform: translateY(-1px);
+}
+
+.message-card,
+.stat-card,
+.footer-note {
+  backdrop-filter: blur(18px);
+  background: rgba(17, 13, 11, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.message-card {
+  display: grid;
+  gap: 8px;
+  max-width: 540px;
+  padding: 18px 20px;
+  border-radius: 22px;
+}
+
+.message-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 215, 159, 0.74);
+}
+
+.message-card strong {
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.stat-card {
+  display: grid;
+  gap: 10px;
+  min-height: 140px;
+  padding: 18px;
+  border-radius: 22px;
+}
+
+.stat-card span,
+.stat-card small {
+  color: rgba(255, 248, 231, 0.72);
+}
+
+.stat-card strong {
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  line-height: 1;
+}
+
+.footer-note {
+  max-width: 540px;
+  padding: 16px 18px;
+  border-radius: 18px;
+}
+
+.footer-note p {
+  margin: 0;
+  line-height: 1.6;
+  color: rgba(255, 248, 231, 0.82);
+}
+
+@media (max-width: 1080px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .app-shell {
+    padding: 10px;
+  }
+
+  .ballpit-frame {
+    min-height: calc(100vh - 20px);
+    border-radius: 26px;
+  }
+
+  .overlay {
+    padding: 22px 20px 28px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .useless-button,
+  .secondary-button {
+    width: 100%;
+  }
+}
